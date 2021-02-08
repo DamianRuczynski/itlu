@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+
+
+</head>
+<body>
+
+<center>
+    <h3>LISTA WPROWADZONYCH FAKTURY</h3>
+</center>
+
+<table>
+    <thead>
+    <tr>
+        <th> Imie</th>
+        <th> Nazwisko</th>
+        <th> Miasto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${workers.empty}">
+        <td colspan="2"> No Bills Available</td>
+    </tr>
+    <tr th:each="worker : ${workers}">
+        <td><span th:text="${worker.getSurname()}">  </span></td>
+        <td><span th:text="${worker.getName()}">  </span></td>
+        <td><span th:text="${worker.getCity()}">  </span></td>
+    </tr>
+    </tbody>
+</table>
+
+<br><br>
+<center>
+    <a href="/index">Menu</a>
+</center>
+</body>
+
+</html>
+
+
