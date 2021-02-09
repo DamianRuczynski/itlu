@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -26,7 +27,7 @@ public class Worker {
     private String email;
     private String city;
     private String phone_number;
-    private LocalDate date_of_employment;
+    private Date date_of_employment;
     private Long id_team;
 
 }

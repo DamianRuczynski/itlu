@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View your raport</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+</head>
+<body>
+<tr th:if="${workers.empty}">
+    <td colspan="2"> No Employee Available</td>
+</tr>
+
+<table>
+    <thead>
+    <tr>
+        <th>Surname</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>Phone Number</th>
+        <th>Date of employment</th>
+    </tr>
+    </thead>
+
+    <tr th:each="worker : ${workers}">
+        <td><span th:text="${worker.getSurname()}">  </span></td>
+        <td><span th:text="${worker.getName()}">  </span></td>
+        <td><span th:text="${worker.getEmail()}">  </span></td>
+        <td><span th:text="${worker.getCity()}">  </span></td>
+        <td><span th:text="${worker.getPhone_number()}">  </span></td>
+        <td><span th:text="${worker.getDate_of_employment()}">  </span></td>
+    </tr>
+
+
+</table>
+
+<br><br>
+<center>
+    <a href="/index">Menu</a>
+    <a href="/addEmployee">Add New Employee</a>
+</center>
+</body>
+</html>

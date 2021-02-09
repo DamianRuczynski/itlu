@@ -23,7 +23,15 @@ public class WorkerService {
 
     public void saveWorker(WorkerDto workerDto){
 
+        Worker newWorker = new Worker();
+        newWorker.setName(workerDto.getName());
+        newWorker.setSurname(workerDto.getSurname());
+        newWorker.setEmail(workerDto.getEmail());
+        newWorker.setCity(workerDto.getCity());
+        newWorker.setPhone_number(workerDto.getPhone_number());
+        newWorker.setDate_of_employment(workerDto.getDate_of_employment());
 
+        workerRepository.save(newWorker);
     }
 
 }
