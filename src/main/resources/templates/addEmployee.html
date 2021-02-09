@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new project</title>
+</head>
+<body>
+<br><br>
+
+<center>
+    <h3>Add new employeer</h3>
+</center>
+
+<form action="#" th:action="@{/create}" th:object="${positionForm}"
+      method="post">
+    <table>
+
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>email</th>
+            <th>city</th>
+            <th>phone_number</th>
+            <th>date_of_employment</th>
+        </tr>
+
+        </thead>
+        <tr th:each="bill : ${billForm}">
+            <td><input required="required" type="text" th:field="*{billDto.name}"/></td>
+            <td><input required="required" type="text" th:field="*{billDto.surname}"/></td>
+            <td><input required="required" type="text" th:field="*{billDto.email}"/></td>
+            <td><input required="required" type="text" min="0" step="0.01" th:field="*{billDto.city}"/></td>
+            <td><input required="required" type="text" min="0" step="0.0001" th:field="*{billDto.phoneNumber}"/></td>
+            <td><input required="required" type="date" th:field="*{billDto.dateOfEmployment}"/></td>
+            <th></th>
+        </tr>
+
+    </table>
+    <br>
+    <center>
+        <br>
+        <input onclick="return confirm('Are you sure?')" type="submit" id="submitButton" th:value="Save">
+        <input onclick="return confirm('Are you sure?')" type="reset" id="resetButton" name="reset" th:value="Reset"/>
+        <br>
+        <br>
+        <br>
+        <a href="/index">Menu</a>
+    </center>
+</form>
+<center>
+    <a href="/index">Menu</a>
+</center>
+</body>
+</html>

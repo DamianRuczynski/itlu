@@ -14,9 +14,10 @@ public class WorkerController {
         this.workerService = workerService;
     }
 
-    @GetMapping("allBills")
+    @GetMapping("view")
     public String showAllWorkers(Model model){
         model.addAttribute("workers", workerService.findAll());
-        return "allBills";
+        return "view";
     }
+
 }
