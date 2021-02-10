@@ -34,4 +34,8 @@ public class WorkerService {
         workerRepository.save(newWorker);
     }
 
+    public void deleteWorker(Long id){
+        workerRepository.deleteById(id);
+    }
+
 }

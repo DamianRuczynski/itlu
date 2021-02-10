@@ -37,20 +37,17 @@ public class CustomerController {
     }
 
 
-//    @GetMapping(path = "/{id}/deleteCustomer")
-//    public String deleteDoctor(@PathVariable Long id) {
-//        customerService.deleteById(id);
-//        CustomerService.deleteByBillId(id);
-//        return "redirect:/allCustomers";
-//    }
-
     @PostMapping("addCustomer")
     public String saveBill(@ModelAttribute CustomerDto form) {
-
-        System.out.println();
         customerService.saveCustomer(form);
-
         return "redirect:/allCustomers";
     }
 
+
+
+    @GetMapping(path = "/{id}/deleteCustomer")
+    public String deleteDoctor(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
+        return "redirect:/allCustomers";
+    }
 }

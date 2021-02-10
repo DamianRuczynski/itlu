@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View your raport</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+</head>
+<body>
+<h3 class="title">ITLU Teams</h3>
+<tr th:if="${teams.empty}">
+    <td colspan="2"> No Teams Available</td>
+</tr>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Details</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+
+    <tr th:each="team : ${teams}">
+        <td><span th:text="${team.getTeam_name()}">  </span></td>
+        <td><span th:text="${team.getDescription()}">  </span></td>
+        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${team.getId()} + '/deleteTeam'}">Details</a></td>
+        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${team.getId()} + '/deleteTeam'}">Delete</a></td>
+
+        <th></th>
+    </tr>
+
+</table>
+
+<br><br>
+<center>
+    <a href="/index">Menu</a>
+    <a href="/addTeam">Add New Team</a>
+</center>
+</body>
+</html>

@@ -21,6 +21,8 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String team_name;
+    private String description;
+    //TODO delete in the future, maybe it is not required
     private Long id_project;
 
 }
