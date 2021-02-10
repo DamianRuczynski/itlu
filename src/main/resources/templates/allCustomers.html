@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View your raport</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+</head>
+<body>
+<tr th:if="${customers.empty}">
+    <td colspan="2"> No Customer Available</td>
+</tr>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>NIP Number</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>House Number</th>
+    </tr>
+    </thead>
+
+    <tr th:each="customer : ${customers}">
+        <td><span th:text="${customer.getSurname()}">  </span></td>
+        <td><span th:text="${customer.getName()}">  </span></td>
+        <td><span th:text="${customer.getEmail()}">  </span></td>
+        <td><span th:text="${customer.getPhone_number()}">  </span></td>
+        <td><span th:text="${customer.getNip_number()}">  </span></td>
+        <td><span th:text="${customer.getCity()}">  </span></td>
+        <td><span th:text="${customer.getStreet()}">  </span></td>
+        <td><span th:text="${customer.getHouse_number()}">  </span></td>
+
+        <th></th>
+    </tr>
+
+</table>
+
+<br><br>
+<center>
+    <a href="/index">Menu</a>
+    <a href="/addCustomer">Add New Customer</a>
+</center>
+</body>
+</html>

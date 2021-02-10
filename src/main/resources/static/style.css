@@ -1,6 +1,11 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #dff9fb;
+}
 table {
     border-collapse: collapse;
     width: 100%;
+    background-color: #dff9fb;
 }
 
 th, td {
@@ -8,15 +13,15 @@ th, td {
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){background-color: #c7ecee;}
 
 th {
-    background-color: #4CAF50;
+    background-color: #30336b;
     color: white;
 }
 
 a:link, a:visited {
-    background-color: #4CAF50;
+    background-color: #30336b;
     color: white;
     padding: 15px 25px;
     text-align: center;
@@ -25,5 +30,14 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-    background-color: red;
+    background-color: #686de0;
+}
+.title {
+    text-align: left;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #30336b;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    margin: 0;
 }
