@@ -32,4 +32,7 @@ public class TeamService {
 
     public void deleteTeam(Long id){teamRepository.deleteById(id);}
 
+    public Team findById(Long id) {
+        return teamRepository.findById(id).orElse(new Team());
+    }
 }

@@ -24,7 +24,7 @@
     <tr th:each="team : ${teams}">
         <td><span th:text="${team.getTeam_name()}">  </span></td>
         <td><span th:text="${team.getDescription()}">  </span></td>
-        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${team.getId()} + '/deleteTeam'}">Details</a></td>
+        <td><a th:href="@{'/' + ${team.getId()} + '/teamDetails'}">Details</a></td>
         <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${team.getId()} + '/deleteTeam'}">Delete</a></td>
 
         <th></th>

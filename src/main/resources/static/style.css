@@ -1,10 +1,10 @@
 body {
     font-family: 'Quicksand', sans-serif;
+    width: 100%;
     background-color: #dff9fb;
 }
 table {
     border-collapse: collapse;
-    width: 100%;
     background-color: #dff9fb;
 }
 

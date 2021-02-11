@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<h3 class="title">ITLU Teams</h3>
+<!--<h2>Name: </h2><h2 th:text="${team.getTeam_name()}">Name </h2>-->
+<!--<h2>Description: </h2><h2 th:text="${team.getDescription()}">Description </h2>-->
+
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Team Number</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+
+    <tr>
+        <td><span th:text="${team.getId()}">  </span></td>
+        <td><span th:text="${team.getTeam_name()}">  </span></td>
+        <td><span th:text="${team.getDescription()}">  </span></td>
+        <th></th>
+    </tr>
+
+</table>
+
+
+<br><br>
+<br><br>
+<br><br>
+
+<h3 class="title">Employees in Team:</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Surname</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>Phone Number</th>
+        <th>Date of employment</th>
+        <th>Remove from team</th>
+    </tr>
+    </thead>
+
+    <tr th:each="worker : ${workers}">
+        <td><span th:text="${worker.getSurname()}">  </span></td>
+        <td><span th:text="${worker.getName()}">  </span></td>
+        <td><span th:text="${worker.getEmail()}">  </span></td>
+        <td><span th:text="${worker.getCity()}">  </span></td>
+        <td><span th:text="${worker.getPhone_number()}">  </span></td>
+        <td><span th:text="${worker.getDate_of_employment()}">  </span></td>
+        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${worker.getId()} +'/' + ${team.getId()} +  '/deleteWorkerFromTeam'}">Remove</a></td>
+    </tr>
+</table>
+
+
+<center>
+    <a href="/index">Menu</a>
+    <a href="/addEmployeeToTeam">Add Employee To Team</a>
+</center>
+</body>
+
+</html>
+
+

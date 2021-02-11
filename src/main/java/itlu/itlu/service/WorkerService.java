@@ -4,7 +4,9 @@ package itlu.itlu.service;
 import itlu.itlu.dto.WorkerDto;
 import itlu.itlu.model.Worker;
 import itlu.itlu.repository.WorkerRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -38,4 +40,12 @@ public class WorkerService {
         workerRepository.deleteById(id);
     }
 
+    public List<Worker> findAllWorkersToTeam(Long teamId) {
+        return workerRepository.findAllWorkersByTeamId(teamId);
+    }
+
+    @Transactional
+    public void deleteWorkerFromTeam(Long id) {
+         workerRepository.deleteWorkerFromTeam(id);
+    }
 }
