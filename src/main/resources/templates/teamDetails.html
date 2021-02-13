@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-image:url('/images/biuro.png');background-size: cover;">
+
 <h3 class="title">ITLU Teams</h3>
 <!--<h2>Name: </h2><h2 th:text="${team.getTeam_name()}">Name </h2>-->
 <!--<h2>Description: </h2><h2 th:text="${team.getDescription()}">Description </h2>-->
@@ -33,12 +34,7 @@
     </tr>
 
 </table>
-
-
 <br><br>
-<br><br>
-<br><br>
-
 <h3 class="title">Employees in Team:</h3>
 <table>
     <thead>
@@ -53,6 +49,9 @@
     </tr>
     </thead>
 
+    <tr th:if="${workers.empty}">
+        <td colspan="2">No Employee Has Been Assigned To Team !!!!</td>
+    </tr>
     <tr th:each="worker : ${workers}">
         <td><span th:text="${worker.getSurname()}">  </span></td>
         <td><span th:text="${worker.getName()}">  </span></td>
@@ -67,7 +66,7 @@
 
 <center>
     <a href="/index">Menu</a>
-    <a href="/addEmployeeToTeam">Add Employee To Team</a>
+    <a th:href="@{'/' + ${team.getId()} +  '/addEmployeeToTeam'}">Add Employee To Team</a>
 </center>
 </body>
 

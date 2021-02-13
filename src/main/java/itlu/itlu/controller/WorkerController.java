@@ -1,15 +1,13 @@
 package itlu.itlu.controller;
 
+import itlu.itlu.dto.WorkerAndEmployeeIdsObject;
 import itlu.itlu.dto.WorkerDto;
+import itlu.itlu.model.Worker;
 import itlu.itlu.service.WorkerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -42,9 +40,23 @@ public class WorkerController {
 
     @GetMapping(path = "/{id}/deleteWorker")
     public String deleteDoctor(@PathVariable Long id) {
-        System.out.println();
         workerService.deleteWorker(id);
         return "redirect:/allEmployees";
     }
 
+    @GetMapping(path = "/{teamId}/addEmployeeToTeam")
+    public String addEmployeeTotTeam(Model model, @PathVariable Long teamId) {
+        List<Worker> workerList = workerService.findNotAssignmentEmployees();
+        WorkerAndEmployeeIdsObject workerAndEmployeeIdsObject = new WorkerAndEmployeeIdsObject(null, teamId);
+        model.addAttribute("teamId", teamId);
+        model.addAttribute("att", workerAndEmployeeIdsObject);
+        model.addAttribute("workers", workerList);
+        return "addEmloyeeToTeam";
+    }
+
+    @PostMapping(path = "addEmployeeToTeam")
+    public String updateEmployee(@ModelAttribute WorkerAndEmployeeIdsObject form) {
+        workerService.updateWorker(form.getWorkerId(), form.getTeamId());
+        return "redirect:/" + form.getTeamId() + "/teamDetails";
+    }
 }

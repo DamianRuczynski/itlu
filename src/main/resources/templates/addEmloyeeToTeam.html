@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add Employee To Team</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+</head>
+<body style="background-image:url('/images/biuro.png');background-size: cover;">
+<h3 class="title">ITLU Add Employee To Team</h3>
+<br><br>
+<center>
+<h4>Select Employee To Team:</h4>
+</center>
+<form action="#" th:action="@{/addEmployeeToTeam}" th:object="${att}"
+      method="post">
+    <center>
+    <select th:field="*{workerId}">
+        <option value="">Select Employee</option>
+        <br><br>
+        <option th:each="test : ${workers}"
+                th:value="${test.getId()}"
+                th:text="${test.getName()}+' : '+${test.getSurname()}">
+        </option>
+    </select>
+    <input type="hidden" th:field="*{teamId}" th:value="${teamId}" />
+    <br>
+        <br>
+        <input onclick="return confirm('Are you sure?')" type="submit" id="submitButton" th:value="Save">
+        <input onclick="return confirm('Are you sure?')" type="reset" id="resetButton" name="reset" th:value="Reset"/>
+        <br>
+        <br>
+        <br>
+        <a href="/index">Menu</a>
+    </center>
+</form>
+
+</body>
+
+</html>
+
+

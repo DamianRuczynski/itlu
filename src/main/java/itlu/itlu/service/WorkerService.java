@@ -48,4 +48,13 @@ public class WorkerService {
     public void deleteWorkerFromTeam(Long id) {
          workerRepository.deleteWorkerFromTeam(id);
     }
+
+    @Transactional
+    public void updateWorker(Long id, Long teamId) {
+        workerRepository.updateWorker(id,teamId);
+    }
+
+    public List<Worker> findNotAssignmentEmployees() {
+       return workerRepository.findNotAssignmentEmployees();
+    }
 }

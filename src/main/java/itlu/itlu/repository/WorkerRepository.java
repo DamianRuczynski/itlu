@@ -18,4 +18,12 @@ public interface WorkerRepository extends JpaRepository<Worker, Long> {
     @Modifying
     @Query(value = "UPDATE worker w SET w.id_team = null WHERE w.id =:workerId", nativeQuery = true)
     int deleteWorkerFromTeam(@Param("workerId") Long id);
+
+    @Modifying
+    @Query(value = "UPDATE worker w SET w.id_team =:teamId WHERE w.id =:workerId", nativeQuery = true)
+    void updateWorker(@Param("workerId") Long id,
+                      @Param("teamId") Long teamId);
+
+    @Query(value = "SELECT * FROM worker WHERE id_team is null", nativeQuery = true)
+    List<Worker> findNotAssignmentEmployees();
 }
