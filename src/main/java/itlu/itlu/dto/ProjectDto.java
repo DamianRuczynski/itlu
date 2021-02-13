@@ -1,5 +1,6 @@
 package itlu.itlu.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,11 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class WorkerAndEmployeeIdsObject {
-    private Long workerId;
-    private Long teamId;
+public class ProjectDto {
+
+    private Long id;
+    private String companyName;
+    private String teamName;
+    private String projectName;
+    private String projectPurpose;
 }

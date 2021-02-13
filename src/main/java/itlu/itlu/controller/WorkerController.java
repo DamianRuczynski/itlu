@@ -1,6 +1,6 @@
 package itlu.itlu.controller;
 
-import itlu.itlu.dto.WorkerAndEmployeeIdsObject;
+import itlu.itlu.dto.workerAndTeamId;
 import itlu.itlu.dto.WorkerDto;
 import itlu.itlu.model.Worker;
 import itlu.itlu.service.WorkerService;
@@ -47,15 +47,15 @@ public class WorkerController {
     @GetMapping(path = "/{teamId}/addEmployeeToTeam")
     public String addEmployeeTotTeam(Model model, @PathVariable Long teamId) {
         List<Worker> workerList = workerService.findNotAssignmentEmployees();
-        WorkerAndEmployeeIdsObject workerAndEmployeeIdsObject = new WorkerAndEmployeeIdsObject(null, teamId);
+        workerAndTeamId workerAndTeamId = new workerAndTeamId(null, teamId);
         model.addAttribute("teamId", teamId);
-        model.addAttribute("att", workerAndEmployeeIdsObject);
+        model.addAttribute("att", workerAndTeamId);
         model.addAttribute("workers", workerList);
         return "addEmloyeeToTeam";
     }
 
     @PostMapping(path = "addEmployeeToTeam")
-    public String updateEmployee(@ModelAttribute WorkerAndEmployeeIdsObject form) {
+    public String updateEmployee(@ModelAttribute workerAndTeamId form) {
         workerService.updateWorker(form.getWorkerId(), form.getTeamId());
         return "redirect:/" + form.getTeamId() + "/teamDetails";
     }

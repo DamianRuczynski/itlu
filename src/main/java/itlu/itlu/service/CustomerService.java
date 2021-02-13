@@ -24,6 +24,7 @@ public class CustomerService {
     public void saveCustomer(CustomerDto customerDto){
 
         Customer newCustomer = new Customer();
+        newCustomer.setCompany_name(customerDto.getCompany_name());
         newCustomer.setName(customerDto.getName());
         newCustomer.setSurname(customerDto.getSurname());
         newCustomer.setEmail(customerDto.getEmail());

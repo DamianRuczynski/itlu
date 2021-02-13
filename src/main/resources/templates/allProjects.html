@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View your raport</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+</head>
+<body>
+<h3 class="title">ITLU Teams</h3>
+<tr th:if="${projects.empty}">
+    <td colspan="2"> No Teams Available</td>
+</tr>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Team</th>
+        <th>Company Name</th>
+        <th>Details</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+
+    <tr th:each="project : ${projects}">
+        <td><span th:text="${project.getProject_name()}">  </span></td>
+        <td><span th:text="${project.getProject_purpose()}">  </span></td>
+        <td><span th:text="${project.getId_customer()}">  </span></td>
+        <td><span th:text="${project.getId_team()}">  </span></td>
+        <td><a th:href="@{'/' + ${project.getId()} + '/projectDetails'}">Details</a></td>
+        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${project.getId()} + '/deleteTeam'}">Delete</a></td>
+
+        <th></th>
+    </tr>
+
+</table>
+
+<br><br>
+<center>
+    <a href="/index">Menu</a>
+    <a href="/addTeam">Add New Team</a>
+</center>
+</body>
+</html>

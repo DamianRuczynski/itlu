@@ -13,6 +13,7 @@ import java.sql.Date;
 @NoArgsConstructor
 public class CustomerDto {
 
+    private String company_name;
     private String name;
     private String surname;
     private String email;

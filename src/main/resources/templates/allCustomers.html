@@ -14,6 +14,7 @@
 <table>
     <thead>
     <tr>
+        <th>Company Name</th>
         <th>Name</th>
         <th>Surname</th>
         <th>Email</th>
@@ -27,6 +28,7 @@
     </thead>
 
     <tr th:each="customer : ${customers}">
+        <td><span th:text="${customer.getCompany_name()}">  </span></td>
         <td><span th:text="${customer.getSurname()}">  </span></td>
         <td><span th:text="${customer.getName()}">  </span></td>
         <td><span th:text="${customer.getEmail()}">  </span></td>
