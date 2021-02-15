@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
 </head>
 <body>
-<h3 class="title">ITLU Teams</h3>
+<h3 class="title">ITLU Projects</h3>
 <tr th:if="${projects.empty}">
     <td colspan="2"> No Teams Available</td>
 </tr>
@@ -24,12 +24,11 @@
     </thead>
 
     <tr th:each="project : ${projects}">
-        <td><span th:text="${project.getProject_name()}">  </span></td>
-        <td><span th:text="${project.getProject_purpose()}">  </span></td>
-        <td><span th:text="${project.getId_customer()}">  </span></td>
-        <td><span th:text="${project.getId_team()}">  </span></td>
-        <td><a th:href="@{'/' + ${project.getId()} + '/projectDetails'}">Details</a></td>
-        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${project.getId()} + '/deleteTeam'}">Delete</a></td>
+        <td><span th:text="${project.getProjectName()}">  </span></td>
+        <td><span th:text="${project.getProjectPurpose()}">  </span></td>
+        <td><span th:text="${project.getTeamName()}">  </span></td>
+        <td><span th:text="${project.getCompanyName()}">  </span></td>
+        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${project.getId()} + '/deleteProject'}">Delete</a></td>
 
         <th></th>
     </tr>
@@ -39,7 +38,7 @@
 <br><br>
 <center>
     <a href="/index">Menu</a>
-    <a href="/addTeam">Add New Team</a>
+    <a href="/addProject">Add New Project</a>
 </center>
 </body>
 </html>
