@@ -42,7 +42,9 @@ public class TeamController {
 
     @GetMapping(path = "/{id}/deleteTeam")
     public String deleteDoctor(@PathVariable Long id) {
-        System.out.println();
+        if(workerService.checkIfThereAreAssignedEmployees(id)){
+            return "redirect:/canNotDeleteTeam";
+        }
         teamService.deleteTeam(id);
         return "redirect:/allTeams";
     }

@@ -57,4 +57,12 @@ public class WorkerService {
     public List<Worker> findNotAssignmentEmployees() {
        return workerRepository.findNotAssignmentEmployees();
     }
+
+    public boolean checkIfThereAreAssignedEmployees(Long id) {
+        return workerRepository.findAllWorkersByTeamId(id).size() > 0;
+    }
+
+    public boolean checkWorkerHasTeam(Long id) {
+        return (workerRepository.findById(id).orElse(new Worker()).getId_team() != null);
+    }
 }

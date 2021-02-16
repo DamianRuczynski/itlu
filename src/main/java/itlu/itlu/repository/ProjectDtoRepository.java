@@ -27,8 +27,8 @@ public class ProjectDtoRepository {
     private ProjectDto mapToProjectDto(ResultSet rs) throws SQLException {
         return new ProjectDto(
                 rs.getLong("id"),
-                rs.getString("team_name"),
                 rs.getString("company_name"),
+                rs.getString("team_name"),
                 rs.getString("project_name"),
                 rs.getString("project_purpose"));
     }

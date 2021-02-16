@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
 </head>
-<body>
+<body style="background-image:url('/images/biuro.png');background-size: cover;">
 <h3 class="title">ITLU Project Create</h3>
 
 <form action="#" th:action="@{/addProject}" th:object="${projectForm}"
@@ -17,12 +17,32 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Team</th>
+            <th>Customer</th>
         </tr>
 
         </thead>
         <tr th:each="project : ${projectForm}">
             <td><input required="required" type="text" th:field="*{project_name}"/></td>
             <td><input required="required" type="text" th:field="*{project_purpose}"/></td>
+            <td>
+                <select th:field="*{id_team}">
+                    <option value="">Select Team</option>
+                    <option th:each="test : ${teams}"
+                            th:value="${test.getId()}"
+                            th:text="${test.getTeam_name()}">
+                    </option>
+                </select>
+            </td>
+            <td>
+                <select th:field="*{id_customer}">
+                    <option value="">Select Customer</option>
+                    <option th:each="test : ${customers}"
+                            th:value="${test.getId()}"
+                            th:text="${test.getCompany_name()}+' : '+${test.getNip_number()}">
+                    </option>
+                </select>
+            </td>
 
             <th></th>
         </tr>

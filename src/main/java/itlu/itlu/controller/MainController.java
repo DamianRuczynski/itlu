@@ -13,8 +13,8 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value = {"/emptyList"}, method = RequestMethod.GET)
-    public String emptyListError(Model model) {
-        return "emptyList";
+    @RequestMapping(value = {"/canNotDeleteTeam"}, method = RequestMethod.GET)
+    public String canNotDeleteTeam() {
+        return "canNotDeleteTeam";
     }
 }

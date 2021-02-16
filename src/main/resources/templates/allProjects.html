@@ -5,7 +5,7 @@
     <title>View your raport</title>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
 </head>
-<body>
+<body style="background-image:url('/images/biuro.png');background-size: cover;">
 <h3 class="title">ITLU Projects</h3>
 <tr th:if="${projects.empty}">
     <td colspan="2"> No Teams Available</td>
@@ -18,7 +18,6 @@
         <th>Description</th>
         <th>Team</th>
         <th>Company Name</th>
-        <th>Details</th>
         <th>Delete</th>
     </tr>
     </thead>

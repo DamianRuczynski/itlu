@@ -4,6 +4,7 @@ package itlu.itlu.service;
 import itlu.itlu.dto.CustomerDto;
 import itlu.itlu.model.Customer;
 import itlu.itlu.repository.CustomerRepository;
+import itlu.itlu.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
 public class CustomerService {
 
     private  final CustomerRepository customerRepository;
+    private final ProjectRepository projectRepository;
 
-    public CustomerService(CustomerRepository customerRepository) {
+    public CustomerService(CustomerRepository customerRepository, ProjectRepository projectRepository) {
         this.customerRepository = customerRepository;
+        this.projectRepository = projectRepository;
     }
 
     public List<Customer> findAll() {
@@ -39,4 +42,5 @@ public class CustomerService {
 
     public void deleteCustomer(Long id){customerRepository.deleteById(id);}
 
+    public boolean checkCustomerHasProject(Long id) { return projectRepository.findProjectByCustomerId(id).size() > 0; }
 }

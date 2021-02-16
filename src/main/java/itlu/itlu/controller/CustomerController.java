@@ -43,10 +43,11 @@ public class CustomerController {
         return "redirect:/allCustomers";
     }
 
-
-
     @GetMapping(path = "/{id}/deleteCustomer")
     public String deleteDoctor(@PathVariable Long id) {
+        if(customerService.checkCustomerHasProject(id)){
+            return "redirect:/canNotDeleteTeam";
+        }
         customerService.deleteCustomer(id);
         return "redirect:/allCustomers";
     }
