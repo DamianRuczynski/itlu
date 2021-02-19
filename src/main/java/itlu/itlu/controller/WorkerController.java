@@ -41,7 +41,7 @@ public class WorkerController {
     @GetMapping(path = "/{id}/deleteWorker")
     public String deleteDoctor(@PathVariable Long id) {
         if(workerService.checkWorkerHasTeam(id)){
-            return "redirect:/canNotDeleteTeam";
+            return "redirect:/canNotDeleteTeam/CAN NOT DELETE THIS EMPLOYEE !!!!!!";
         }
         workerService.deleteWorker(id);
         return "redirect:/allEmployees";

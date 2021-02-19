@@ -14,4 +14,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     @Query(value = "SELECT * FROM project WHERE id_customer =:customerId", nativeQuery = true)
     List<Project> findProjectByCustomerId(@Param("customerId") Long id);
+
+    @Query(value = "SELECT * FROM project WHERE id_team =:teamId", nativeQuery = true)
+    List<Project> findProjectByTeamId(@Param("teamId") Long id);
 }

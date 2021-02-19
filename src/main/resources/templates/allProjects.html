@@ -18,6 +18,7 @@
         <th>Description</th>
         <th>Team</th>
         <th>Company Name</th>
+        <th>Status</th>
         <th>Delete</th>
     </tr>
     </thead>
@@ -27,6 +28,7 @@
         <td><span th:text="${project.getProjectPurpose()}">  </span></td>
         <td><span th:text="${project.getTeamName()}">  </span></td>
         <td><span th:text="${project.getCompanyName()}">  </span></td>
+        <td><span th:text="${project.getProject_status()}">  </span></td>
         <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${project.getId()} + '/deleteProject'}">Delete</a></td>
 
         <th></th>

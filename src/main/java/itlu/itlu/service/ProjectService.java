@@ -3,7 +3,6 @@ package itlu.itlu.service;
 import itlu.itlu.dto.CreateProjectDto;
 import itlu.itlu.dto.ProjectDto;
 import itlu.itlu.model.Project;
-import itlu.itlu.model.Team;
 import itlu.itlu.repository.ProjectDtoRepository;
 import itlu.itlu.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
@@ -26,7 +25,9 @@ public class ProjectService {
         return projectDtoRepository.getAllProjectWithName();
     }
 
-    public void deleteProject(Long id){projectRepository.deleteById(id);}
+    public void deleteProject(Long id) {
+        projectRepository.deleteById(id);
+    }
 
     public void saveProject(CreateProjectDto createProjectDto) {
 
@@ -35,7 +36,16 @@ public class ProjectService {
         newProject.setProject_purpose(createProjectDto.getProject_purpose());
         newProject.setId_team(createProjectDto.getId_team());
         newProject.setId_customer(createProjectDto.getId_customer());
+        newProject.setProject_status(createProjectDto.getProject_status());
 
         projectRepository.save(newProject);
+    }
+
+    public boolean checkHasTeamProject(Long id) {
+        return projectRepository.findProjectByTeamId(id).size() > 0;
+    }
+
+    public boolean checkStatus(Long id) {
+        return projectRepository.findById(id).orElse(new Project()).getProject_status() >= 1;
     }
 }

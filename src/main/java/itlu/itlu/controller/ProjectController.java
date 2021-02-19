@@ -2,6 +2,7 @@ package itlu.itlu.controller;
 
 import itlu.itlu.dto.CreateProjectDto;
 import itlu.itlu.dto.ProjectDto;
+import itlu.itlu.dto.ProjectStatus;
 import itlu.itlu.model.Customer;
 import itlu.itlu.model.Team;
 import itlu.itlu.service.CustomerService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -38,7 +40,9 @@ public class ProjectController {
 
     @GetMapping(path = "/{id}/deleteProject")
     public String deleteDoctor(@PathVariable Long id) {
-        System.out.println();
+        if(projectService.checkStatus(id)){
+            return "redirect:/canNotDeleteTeam/CAN NOT DELETE THIS PROJECTS !!!";
+        }
         projectService.deleteProject(id);
         return "redirect:/allProjects";
     }
@@ -49,6 +53,7 @@ public class ProjectController {
         List<Team> teams = teamService.findAll();
         List<Customer> customers = customerService.findAll();
         model.addAttribute("projectForm", createProjectDto);
+        model.addAttribute("statuses", Arrays.asList(ProjectStatus.values()));
         model.addAttribute("teams", teams);
         model.addAttribute("customers", customers);
         return "addProject";
@@ -59,7 +64,4 @@ public class ProjectController {
         projectService.saveProject(createProjectDto);
         return "redirect:/allProjects";
     }
-
-
-
 }

@@ -17,4 +17,5 @@ public class ProjectDto {
     private String teamName;
     private String projectName;
     private String projectPurpose;
+    private String project_status;
 }

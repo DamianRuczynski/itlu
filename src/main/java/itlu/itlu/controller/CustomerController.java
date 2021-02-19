@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class CustomerController {
 
@@ -22,17 +19,15 @@ public class CustomerController {
     }
 
     @GetMapping("allCustomers")
-    public String showAllCustomers(Model model){
+    public String showAllCustomers(Model model) {
         model.addAttribute("customers", customerService.findAll());
         return "allCustomers";
     }
 
     @GetMapping("/addCustomer")
     public String showCreateForm(Model model) {
-
         CustomerDto customerDto = new CustomerDto();
         model.addAttribute("customerForm", customerDto);
-
         return "addCustomer";
     }
 
@@ -45,8 +40,8 @@ public class CustomerController {
 
     @GetMapping(path = "/{id}/deleteCustomer")
     public String deleteDoctor(@PathVariable Long id) {
-        if(customerService.checkCustomerHasProject(id)){
-            return "redirect:/canNotDeleteTeam";
+        if (customerService.checkCustomerHasProject(id)) {
+            return "redirect:/canNotDeleteTeam/CAN NOT DELETE CUSTOMER BECAUSE HAS PROJECTS";
         }
         customerService.deleteCustomer(id);
         return "redirect:/allCustomers";

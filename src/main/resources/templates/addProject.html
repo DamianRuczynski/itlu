@@ -19,6 +19,7 @@
             <th>Description</th>
             <th>Team</th>
             <th>Customer</th>
+            <th>Status</th>
         </tr>
 
         </thead>
@@ -40,6 +41,14 @@
                     <option th:each="test : ${customers}"
                             th:value="${test.getId()}"
                             th:text="${test.getCompany_name()}+' : '+${test.getNip_number()}">
+                    </option>
+                </select>
+            </td>
+            <td>
+                <select th:field="*{project_status}">
+                    <option th:each="test : ${statuses}"
+                            th:value="${test.getValue()}"
+                            th:text="${test.getDescription()}">
                     </option>
                 </select>
             </td>

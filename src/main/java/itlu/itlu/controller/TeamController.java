@@ -1,6 +1,7 @@
 package itlu.itlu.controller;
 
 import itlu.itlu.dto.TeamDto;
+import itlu.itlu.service.ProjectService;
 import itlu.itlu.service.TeamService;
 import itlu.itlu.service.WorkerService;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,12 @@ public class TeamController {
 
     private final TeamService teamService;
     private final WorkerService workerService;
+    private final ProjectService projectService;
 
-    public TeamController(TeamService teamService, WorkerService workerService) {
+    public TeamController(TeamService teamService, WorkerService workerService, ProjectService projectService) {
         this.teamService = teamService;
         this.workerService = workerService;
+        this.projectService = projectService;
     }
 
     @GetMapping("allTeams")
@@ -41,9 +44,12 @@ public class TeamController {
     }
 
     @GetMapping(path = "/{id}/deleteTeam")
-    public String deleteDoctor(@PathVariable Long id) {
+    public String deleteDoctor(
+            @PathVariable Long id) {
         if(workerService.checkIfThereAreAssignedEmployees(id)){
-            return "redirect:/canNotDeleteTeam";
+            return "redirect:/canNotDeleteTeam/CAN NOT DELETE TEAM BECAUSE HAS ASSIGNED EMPLOYEES !!!";
+        }else if(projectService.checkHasTeamProject(id)){
+            return "redirect:/canNotDeleteTeam/THIS TEAM HAS ACTIVE PROJECTS !!!";
         }
         teamService.deleteTeam(id);
         return "redirect:/allTeams";
@@ -51,17 +57,19 @@ public class TeamController {
 
 
     @GetMapping("/{id}/teamDetails")
-    public String showOne(@PathVariable Long id, Model model) {
+    public String showOne(
+            @PathVariable Long id,
+            Model model) {
         model.addAttribute("team", teamService.findById(id));
         model.addAttribute("workers", workerService.findAllWorkersToTeam(id));
         return "teamDetails";
     }
 
     @GetMapping(path = "/{id}/{teamId}/deleteWorkerFromTeam")
-    public String deleteWorkerFromTeam(@PathVariable Long id,
-                                       @PathVariable Long teamId) {
+    public String deleteWorkerFromTeam(
+            @PathVariable Long id,
+            @PathVariable Long teamId) {
         workerService.deleteWorkerFromTeam(id);
         return "redirect:/"+teamId+"/teamDetails";
     }
-
 }

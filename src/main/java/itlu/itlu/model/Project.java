@@ -24,4 +24,5 @@ public class Project {
     private String project_purpose;
     private Long id_team;
     private Long id_customer;
+    private Integer project_status;
 }
