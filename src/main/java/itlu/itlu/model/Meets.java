@@ -22,10 +22,11 @@ public class Meets {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String meet_purpose;
-    private LocalDate date_of_meet;
+    private String date_of_meet;
     private String location;
     private String city;
     private Long id_team;
     private Long id_customer;
+    private Integer meets_status;
 
 }

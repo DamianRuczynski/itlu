@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meetings</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+</head>
+<body style="background-image:url('/images/biuro.png');background-size: cover;">
+<h3 class="title">ITLU Meets</h3>
+<tr th:if="${meets.empty}">
+    <td colspan="2"> No Meets Available</td>
+</tr>
+
+<table>
+    <thead>
+    <tr>
+        <th>Purpose</th>
+        <th>Date of meet</th>
+        <th>Location</th>
+        <th>City</th>
+        <th>Status</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+
+    <tr th:each="meet : ${meets}">
+        <td><span th:text="${meet.getMeetPurpose()}">  </span></td>
+        <td><span th:text="${meet.getDateOfMeet()}">  </span></td>
+        <td><span th:text="${meet.getLocation()}">  </span></td>
+        <td><span th:text="${meet.getCity()}">  </span></td>
+        <td><span th:text="${meet.getMeet_status()}">  </span></td>
+        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${meet.getId()} + '/deleteMeet'}">Delete</a></td>
+
+        <th></th>
+    </tr>
+
+</table>
+
+<br><br>
+<center>
+    <a href="/index">Menu</a>
+    <a href="/addMeet">Add New Meet</a>
+</center>
+</body>
+</html>
