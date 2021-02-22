@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -22,7 +23,7 @@ public class Meets {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String meet_purpose;
-    private String date_of_meet;
+    private Date date_of_meet;
     private String location;
     private String city;
     private Long id_team;

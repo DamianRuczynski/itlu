@@ -20,7 +20,7 @@ public class MeetsDtoRepository {
 
     public List<MeetsDto> getAllMeetsWithName(){
         return jdbcTemplate.query(
-                "SELECT c.company_name, t.team_name, m.city, m.location, m.meet_purpose\n" +
+                "SELECT c.company_name, t.team_name, m.city, m.location, m.meet_purpose, m.meets_status, m.id, m.date_of_meet\n" +
                         "FROM meets m\n" +
                         "LEFT JOIN customer c ON c.id = m.id_customer\n" +
                         "LEFT JOIN team t ON t.id = m.id_team;" ,
@@ -32,11 +32,11 @@ public class MeetsDtoRepository {
         return new MeetsDto(
                 rs.getLong("id"),
                 rs.getString("meet_purpose"),
-                rs.getString("date_od_meet"),
+                rs.getDate("date_od_meet"),
                 rs.getString("location"),
                 rs.getString("city"),
-                rs.getString("companyName"),
-                rs.getString("teamName"),
+                rs.getString("company_name"),
+                rs.getString("team_name"),
                 getDescription(status));
     }
 
