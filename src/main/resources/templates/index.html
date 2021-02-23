@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title></title>
+    <title>ITLU Website</title>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-image:url('/images/biuro.png');background-size: cover;">
 
 <center>
     <h3 class="title">ITLU project management system</h3>
@@ -32,11 +32,9 @@
         <td><a href="/allEmployees">click here</a></td>
         <td><a href="/allCustomers">click here</a></td>
         <td><a href="/allMeets">click here</a></td>
-<!--        <td><a href="/allBills">click here</a></td>-->
     </tr>
 
 </table>
-<img th:src="@{/images/biuro.png}">
 </body>
 
 </html>

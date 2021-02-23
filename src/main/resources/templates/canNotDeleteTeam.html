@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Can not delete</title>
+
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 </head>
 <body style="background-image:url('/images/biuro.png');background-size: cover;">
 
-<h1 th:text="${error}"></h1>
+<h1 th:text="${error}" class="title"></h1>
 <br>
 <br>
 <br>
+<center>
+    <a href="/index">Menu</a>
+</center>
 </body>
 </html>

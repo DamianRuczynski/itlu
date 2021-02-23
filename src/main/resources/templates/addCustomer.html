@@ -2,11 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Add New Customer</title>
+    <title>ITLU Website</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background-image:url('/images/biuro.png');background-size: cover;">
 <h3 class="title">ITLU Add Customer</h3>
 
 <form action="#" th:action="@{/addCustomer}" th:object="${customerForm}"
