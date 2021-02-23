@@ -8,6 +8,7 @@ import itlu.itlu.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjectService {
@@ -32,6 +33,7 @@ public class ProjectService {
     public void saveProject(CreateProjectDto createProjectDto) {
 
         Project newProject = new Project();
+        Optional.ofNullable(createProjectDto.getId()).ifPresent(id -> newProject.setId(id));
         newProject.setProject_name(createProjectDto.getProject_name());
         newProject.setProject_purpose(createProjectDto.getProject_purpose());
         newProject.setId_team(createProjectDto.getId_team());
@@ -47,5 +49,16 @@ public class ProjectService {
 
     public boolean checkStatus(Long id) {
         return projectRepository.findById(id).orElse(new Project()).getProject_status() >= 1;
+    }
+
+    public CreateProjectDto findProjectDto(Long id) {
+        Project project = projectRepository.findById(id).orElse(new Project());
+        return new CreateProjectDto(
+                project.getId(),
+                project.getProject_name(),
+                project.getProject_purpose(),
+                project.getId_team(),
+                project.getId_customer(),
+                project.getProject_status());
     }
 }

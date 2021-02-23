@@ -10,34 +10,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 </head>
 <body style="background-image:url('/images/biuro.png');background-size: cover;">
-<h3 class="title">ITLU Add Employee</h3>
+<h3 class="title">ITLU Project Edit</h3>
 
-<form action="#" th:action="@{/addEmployee}" th:object="${workerForm}"
+<form action="#" th:action="@{/editProject}" th:object="${projectForm}"
       method="post">
+    <input type="hidden" th:field="*{id}" th:value="${projectForm.getId()}" />
+    <input type="hidden" th:field="*{id_team}" th:value="${projectForm.getId_team()}" />
+    <input type="hidden" th:field="*{id_customer}" th:value="${projectForm.getId_customer()}" />
     <table>
 
         <thead>
         <tr>
             <th>Name</th>
-            <th>Surname</th>
-            <th>Email</th>
-            <th>City</th>
-            <th>Phone Number</th>
-            <th>Employee date</th>
+            <th>Description</th>
+            <th>Status</th>
         </tr>
 
         </thead>
-        <tr th:each="worker : ${workerForm}">
-            <td><input required="required" type="text" th:field="*{name}"/></td>
-            <td><input required="required" type="text" th:field="*{surname}"/></td>
-            <td><input required="required" type="text" th:field="*{email}"/></td>
-            <td><input required="required" type="text" th:field="*{city}"/></td>
-            <td><input required="required" type="text" th:field="*{phone_number}"/></td>
-            <td><input required="required" type="date" th:field="*{date_of_employment}"/></td>
-
+        <tr th:each="project : ${projectForm}">
+            <td><input required="required" type="text" th:field="*{project_name}"/></td>
+            <td><input required="required" type="text" th:field="*{project_purpose}"/></td>
+            <td>
+                <select th:field="*{project_status}">
+                    <option th:each="test : ${status}"
+                            th:value="${test.getValue()}"
+                            th:text="${test.getDescription()}">
+                    </option>
+                </select>
+            </td>
             <th></th>
         </tr>
-
     </table>
     <br>
 

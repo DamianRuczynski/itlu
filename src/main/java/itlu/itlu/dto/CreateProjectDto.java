@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateProjectDto {
 
+    private Long id;
     private String project_name;
     private String project_purpose;
     private Long id_team;

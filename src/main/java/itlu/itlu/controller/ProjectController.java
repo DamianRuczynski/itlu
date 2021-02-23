@@ -10,13 +10,11 @@ import itlu.itlu.service.ProjectService;
 import itlu.itlu.service.TeamService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ProjectController {
@@ -64,4 +62,28 @@ public class ProjectController {
         projectService.saveProject(createProjectDto);
         return "redirect:/allProjects";
     }
+
+    @GetMapping("/{id}/editProject")
+    public String editProject(@PathVariable Long id, Model model){
+        CreateProjectDto projectDto = projectService.findProjectDto(id);
+        model.addAttribute("projectForm", projectDto);
+        model.addAttribute("status",
+                Arrays.asList(
+                        ProjectStatus.values())
+                        .stream()
+                        .filter(e -> e.getValue() >= projectDto.getProject_status())
+                        .collect(Collectors.toList()));
+        return "editProject";
+    }
+
+    @PostMapping("editProject")
+    public String saveEditedProject(@ModelAttribute CreateProjectDto editedProjectDto){
+        projectService.saveProject(editedProjectDto);
+        return "redirect:/allProjects";
+    }
+
+
+
+
+
 }
