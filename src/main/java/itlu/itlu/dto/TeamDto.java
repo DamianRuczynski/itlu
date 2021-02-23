@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class TeamDto {
 
+    private Long id;
     private String team_name;
     private String description;
 }

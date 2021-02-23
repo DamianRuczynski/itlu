@@ -21,6 +21,7 @@
         <th>City</th>
         <th>Phone Number</th>
         <th>Date of employment</th>
+        <th>Edit</th>
         <th>Delete</th>
     </tr>
     </thead>
@@ -32,6 +33,7 @@
         <td><span th:text="${worker.getCity()}">  </span></td>
         <td><span th:text="${worker.getPhone_number()}">  </span></td>
         <td><span th:text="${worker.getDate_of_employment()}">  </span></td>
+        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${worker.getId()} + '/editEmployee'}">Edit</a></td>
         <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${worker.getId()} + '/deleteWorker'}">Delete</a></td>
 
     </tr>

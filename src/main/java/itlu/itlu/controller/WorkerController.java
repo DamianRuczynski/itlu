@@ -1,5 +1,6 @@
 package itlu.itlu.controller;
 
+import itlu.itlu.dto.CustomerDto;
 import itlu.itlu.dto.workerAndTeamId;
 import itlu.itlu.dto.WorkerDto;
 import itlu.itlu.model.Worker;
@@ -61,5 +62,17 @@ public class WorkerController {
     public String updateEmployee(@ModelAttribute workerAndTeamId form) {
         workerService.updateWorker(form.getWorkerId(), form.getTeamId());
         return "redirect:/" + form.getTeamId() + "/teamDetails";
+    }
+
+    @GetMapping(path = "/{id}/editEmployee")
+    public String editWorker(@PathVariable Long id, Model model) {
+        model.addAttribute("workerForm", workerService.getWorkerDto(id));
+        return "editEmployee";
+    }
+
+    @PostMapping("editEmployee")
+    public String saveEditedWorker(@ModelAttribute WorkerDto form){
+        workerService.saveWorker(form);
+        return "redirect:/allEmployees";
     }
 }

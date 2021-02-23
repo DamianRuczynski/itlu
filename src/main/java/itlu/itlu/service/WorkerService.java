@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WorkerService {
@@ -26,6 +27,7 @@ public class WorkerService {
     public void saveWorker(WorkerDto workerDto){
 
         Worker newWorker = new Worker();
+        Optional.ofNullable(workerDto.getId()).ifPresent(id-> newWorker.setId(id));
         newWorker.setName(workerDto.getName());
         newWorker.setSurname(workerDto.getSurname());
         newWorker.setEmail(workerDto.getEmail());
@@ -64,5 +66,17 @@ public class WorkerService {
 
     public boolean checkWorkerHasTeam(Long id) {
         return (workerRepository.findById(id).orElse(new Worker()).getId_team() != null);
+    }
+
+    public WorkerDto getWorkerDto(Long id) {
+        Worker worker = workerRepository.findById(id).orElse(new Worker());
+        return new WorkerDto(worker.getId(),
+                worker.getName(),
+                worker.getSurname(),
+                worker.getEmail(),
+                worker.getCity(),
+                worker.getPhone_number(),
+                worker.getDate_of_employment(),
+                worker.getId_team());
     }
 }

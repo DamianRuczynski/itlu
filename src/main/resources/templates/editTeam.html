@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Team</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+</head>
+<body>
+<h3 class="title">ITLU Edit team</h3>
+
+<form action="#" th:action="@{/editTeam}" th:object="${teamForm}"
+      method="post">
+    <input type="hidden" th:field="*{id}" th:value="${teamForm.getId()}" />
+    <table>
+
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+
+        </thead>
+        <tr th:each="team : ${teamForm}">
+            <td><input required="required" type="text" th:field="*{team_name}"/></td>
+            <td><input required="required" type="text" th:field="*{description}"/></td>
+
+            <th></th>
+        </tr>
+
+    </table>
+    <br>
+
+    <center>
+        <br>
+        <input onclick="return confirm('Are you sure?')" type="submit" id="submitButton" th:value="Save">
+        <input onclick="return confirm('Are you sure?')" type="reset" id="resetButton" name="reset" th:value="Reset"/>
+        <br>
+        <br>
+        <br>
+        <a href="/index">Menu</a>
+    </center>
+</form>
+
+</body>
+
+</html>
+
+

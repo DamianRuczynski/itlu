@@ -1,6 +1,7 @@
 package itlu.itlu.controller;
 
 import itlu.itlu.dto.TeamDto;
+import itlu.itlu.dto.WorkerDto;
 import itlu.itlu.service.ProjectService;
 import itlu.itlu.service.TeamService;
 import itlu.itlu.service.WorkerService;
@@ -71,5 +72,17 @@ public class TeamController {
             @PathVariable Long teamId) {
         workerService.deleteWorkerFromTeam(id);
         return "redirect:/"+teamId+"/teamDetails";
+    }
+
+    @GetMapping(path = "/{id}/editTeam")
+    public String editTeam(@PathVariable Long id, Model model) {
+        model.addAttribute("teamForm", teamService.getTeamDto(id));
+        return "editTeam";
+    }
+
+    @PostMapping("editTeam")
+    public String saveEditedTeam(@ModelAttribute TeamDto form){
+        teamService.saveTeam(form);
+        return "redirect:/allTeams";
     }
 }
