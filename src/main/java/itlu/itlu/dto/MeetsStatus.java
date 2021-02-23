@@ -2,13 +2,9 @@ package itlu.itlu.dto;
 
 public enum MeetsStatus {
 
-    IN_PREPARATION(0, "In Preparation"),
-    PREPARED(1, "Prepared"),
-    SIGNED(2, "Signed"),
-    ACTIVE(3, "Active"),
-    FINISHED(4, "Finished"),
-    TERMINATED(5, "Terminated"),
-    CANCELED(6, "Canceled");
+    PLANNED(0, "Planned"),
+    FINISHED(1, "Finished"),
+    CANCELED(2, "Canceled");
 
     private Integer value;
     private String description;

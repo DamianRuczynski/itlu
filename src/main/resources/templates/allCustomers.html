@@ -23,6 +23,7 @@
         <th>City</th>
         <th>Street</th>
         <th>House Number</th>
+        <th>Edit</th>
         <th>Delete</th>
     </tr>
     </thead>
@@ -37,6 +38,7 @@
         <td><span th:text="${customer.getCity()}">  </span></td>
         <td><span th:text="${customer.getStreet()}">  </span></td>
         <td><span th:text="${customer.getHouse_number()}">  </span></td>
+        <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${customer.getId()} + '/editCustomer'}">Edit</a></td>
         <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${customer.getId()} + '/deleteCustomer'}">Delete</a></td>
 
         <th></th>

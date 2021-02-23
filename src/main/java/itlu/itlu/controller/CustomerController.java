@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.sound.midi.Soundbank;
+
 @Controller
 public class CustomerController {
 
@@ -44,6 +46,18 @@ public class CustomerController {
             return "redirect:/canNotDeleteTeam/CAN NOT DELETE CUSTOMER BECAUSE HAS PROJECTS";
         }
         customerService.deleteCustomer(id);
+        return "redirect:/allCustomers";
+    }
+
+    @GetMapping(path = "/{id}/editCustomer")
+    public String editCustomer(@PathVariable Long id, Model model) {
+        model.addAttribute("customerForm", customerService.getCustomerDto(id));
+        return "editCustomer";
+    }
+
+    @PostMapping("editCustomer")
+    public String saveEditedCustomer(@ModelAttribute CustomerDto form){
+        customerService.saveCustomer(form);
         return "redirect:/allCustomers";
     }
 }

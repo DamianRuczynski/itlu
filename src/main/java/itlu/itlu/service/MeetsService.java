@@ -1,14 +1,13 @@
 package itlu.itlu.service;
 
 import itlu.itlu.dto.CreateMeetsDto;
-import itlu.itlu.dto.CreateProjectDto;
 import itlu.itlu.dto.MeetsDto;
 import itlu.itlu.model.Meets;
-import itlu.itlu.model.Project;
 import itlu.itlu.repository.MeetsDtoRepository;
 import itlu.itlu.repository.MeetsRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,13 +25,15 @@ public class MeetsService {
         return meetsDtoRepository.getAllMeetsWithName();
     }
 
-    public void deleteMeets(Long id) { meetsRepository.deleteById(id);
+    public void deleteMeets(Long id) {
+        meetsRepository.deleteById(id);
     }
 
     public void saveMeets(CreateMeetsDto createMeetsDto) {
 
         Meets newMeets = new Meets();
-        newMeets.setDate_of_meet(createMeetsDto.getDate_of_meet());
+        newMeets.setDate_of_meet(LocalDate.parse(createMeetsDto.getDate_of_meet()));
+        newMeets.setTime_of_meet(createMeetsDto.getTime_of_meet());
         newMeets.setMeet_purpose(createMeetsDto.getMeet_purpose());
         newMeets.setId_team(createMeetsDto.getId_team());
         newMeets.setId_customer(createMeetsDto.getId_customer());

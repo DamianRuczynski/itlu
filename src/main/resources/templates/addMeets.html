@@ -17,6 +17,7 @@
         <tr>
             <th>Purpose</th>
             <th>Date Of Meeting</th>
+            <th>Time Of Meeting</th>
             <th>Location</th>
             <th>City</th>
             <th>Team</th>
@@ -28,6 +29,7 @@
         <tr th:each="meets : ${meetsForm}">
             <td><input required="required" type="text" th:field="*{meet_purpose}"/></td>
             <td><input required="required" type="date" th:field="*{date_of_meet}"/></td>
+            <td><input required="required" type="time" th:field="*{time_of_meet}"/></td>
             <td><input required="required" type="text" th:field="*{location}"/></td>
             <td><input required="required" type="text" th:field="*{city}"/></td>
             <td>

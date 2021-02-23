@@ -16,6 +16,7 @@
     <tr>
         <th>Purpose</th>
         <th>Date of meet</th>
+        <th>Time of meet</th>
         <th>Location</th>
         <th>City</th>
         <th>Status</th>
@@ -24,11 +25,12 @@
     </thead>
 
     <tr th:each="meet : ${meets}">
-        <td><span th:text="${meet.getMeetPurpose()}">  </span></td>
-        <td><span th:text="${meet.getDateOfMeet()}">  </span></td>
+        <td><span th:text="${meet.getMeet_purpose()}">  </span></td>
+        <td><span th:text="${meet.getDate_of_meet()}">  </span></td>
+        <td><span th:text="${meet.getTime_of_meet()}">  </span></td>
         <td><span th:text="${meet.getLocation()}">  </span></td>
         <td><span th:text="${meet.getCity()}">  </span></td>
-        <td><span th:text="${meet.getMeet_status()}">  </span></td>
+        <td><span th:text="${meet.getMeets_status()}">  </span></td>
         <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${meet.getId()} + '/deleteMeet'}">Delete</a></td>
 
         <th></th>
@@ -39,7 +41,7 @@
 <br><br>
 <center>
     <a href="/index">Menu</a>
-    <a href="/addMeet">Add New Meet</a>
+    <a href="/addMeets">Add New Meet</a>
 </center>
 </body>
 </html>

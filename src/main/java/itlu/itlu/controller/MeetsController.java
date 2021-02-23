@@ -38,10 +38,10 @@ public class MeetsController {
         return "allMeets";
     }
 
-    @GetMapping(path = "/{id}/deleteMeets")
+    @GetMapping(path = "/{id}/deleteMeet")
     public String deleteDoctor(@PathVariable Long id) {
         if(meetsService.checkStatus(id)){
-            return "redirect:/canNotDeleteTeam/CAN NOT DELETE THIS MEETS !!!";
+            return "redirect:/canNotDeleteTeam/CAN NOT DELETE THIS MEET !!!";
         }
         meetsService.deleteMeets(id);
         return "redirect:/allMeets";
@@ -60,7 +60,7 @@ public class MeetsController {
     }
 
     @PostMapping("addMeets")
-    public String saveBill(@ModelAttribute CreateMeetsDto createMeetsDto) {
+    public String saveMeet(@ModelAttribute CreateMeetsDto createMeetsDto) {
         meetsService.saveMeets(createMeetsDto);
         return "redirect:/allMeets";
     }

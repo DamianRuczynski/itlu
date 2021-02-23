@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Setter
@@ -18,6 +19,7 @@ public class MeetsDto {
     private Long id;
     private String meet_purpose;
     private Date date_of_meet;
+    private String time_of_meet;
     private String location;
     private String city;
     private String meets_status;

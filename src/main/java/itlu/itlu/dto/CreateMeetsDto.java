@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 @Setter
@@ -13,7 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class CreateMeetsDto {
 
-    private Date date_of_meet;
+    private String date_of_meet;
+    private LocalTime time_of_meet;
     private String meet_purpose;
     private String location;
     private String city;
