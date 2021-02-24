@@ -1,8 +1,18 @@
+html {
+    height: 100%;
+}
+
 body {
+    min-height: 100%;
     font-family: 'Quicksand', sans-serif;
     background-color: #dff9fb;
+    width: 100%;
+    margin: 0px;
 }
 table {
+    position: relative;
+    left: 0;
+    top: 0;
     border-collapse: collapse;
     background-color: #dff9fb;
     width: 100%;
@@ -12,12 +22,16 @@ th, td {
     text-align: left;
     padding: 8px;
 }
+.customer input{
+    width: 10em;
+}
 
 tr:nth-child(even){background-color: #c7ecee;}
 
 th {
     background-color: #30336b;
     color: white;
+    width: auto;
 }
 
 a:link, a:visited {
@@ -33,9 +47,13 @@ a:hover, a:active {
     background-color: #686de0;
 }
 .title {
+    position: relative;
+    left: 0;
+    top: 0;
     text-align: left;
     font-family: 'Quicksand', sans-serif;
     background-color: #30336b;
+    width: 100%;
     color: white;
     padding: 15px 25px;
     text-align: center;
@@ -52,6 +70,8 @@ a:hover, a:active {
 }
 
 .logout{
+    left: 0;
+    top: 0;
     background-color: #30336b;
     color: white;
     padding: 15px 25px;

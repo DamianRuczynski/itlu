@@ -15,7 +15,7 @@
 <form action="#" th:action="@{/editCustomer}" th:object="${customerForm}"
       method="post">
     <input type="hidden" th:field="*{id}" th:value="${customerForm.getId()}" />
-    <table>
+    <table class="customer">
 
         <thead>
         <tr>
