@@ -17,4 +17,6 @@ public class CreateProjectDto {
     private Long id_team;
     private Long id_customer;
     private Integer project_status;
+    private Integer project_price;
+
 }

@@ -23,6 +23,7 @@
             <th>Team</th>
             <th>Customer</th>
             <th>Status</th>
+            <th>Project Cost</th>
         </tr>
 
         </thead>
@@ -55,11 +56,73 @@
                     </option>
                 </select>
             </td>
+            <td>
+                <input required="required" type="number" id="check" name="result" th:field="*{project_price}" value="" placeholder="1100" >
+            </td>
 
             <th></th>
         </tr>
 
     </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Graphic Design</th>
+            <th>Static Subpage- 50 pln for piece</th>
+            <th>CMS Content Management System</th>
+            <th>Delivery Time - Express</th>
+            <th>SEO Optimization </th>
+        </tr>
+
+        </thead>
+        <tr>
+            <td><p>500 pln</p></td>
+            <td><input type="number" onkeyup="projectCost()" onclick="projectCost()" id="subpages"/></td>
+            <td><input type="checkbox" onclick="projectCost()" id="cms"/></td>
+            <td><input type="checkbox" onclick="projectCost()" id="express"/></td>
+            <td><input type="checkbox" onclick="projectCost()" id="seo"/></td>
+        </tr>
+    </table>
+    <script>
+
+        function projectCost(){
+
+            let subpages = Number(document.getElementById("subpages").value);
+            let cms = document.getElementById("cms").checked;
+            let express = document.getElementById("express").checked;
+            let seo = document.getElementById("seo").checked;
+
+            let cmsWithNoCheck = 600;
+
+            let sum = 500;
+
+            sum = sum + subpages*50 ;
+
+            if(cms){
+                sum = sum + 1200;
+            } else{
+                sum = sum + 600;
+            }
+
+            if(seo){
+                sum = sum + 600;
+            }
+
+            if(express){
+                sum = sum*1.2;
+            }
+
+
+            document.getElementById("check").value = sum;
+        }
+    </script>
     <br>
 
     <center>

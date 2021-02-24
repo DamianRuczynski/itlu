@@ -19,7 +19,7 @@ public class ProjectDtoRepository {
 
     public List<ProjectDto> getAllProjectWithName(){
         return jdbcTemplate.query(
-                "SELECT p.id, t.team_name, c.company_name, p.project_name, p.project_purpose, p.project_status \n" +
+                "SELECT p.id, t.team_name, c.company_name, p.project_name, p.project_purpose, p.project_status, p.project_price \n" +
                         "FROM project p \n" +
                         "LEFT JOIN customer c ON c.id = p.id_customer\n" +
                         "LEFT join team t ON t.id = p.id_team" ,
@@ -34,7 +34,8 @@ public class ProjectDtoRepository {
                 rs.getString("team_name"),
                 rs.getString("project_name"),
                 rs.getString("project_purpose"),
-                getDescription(status));
+                getDescription(status),
+                rs.getInt("project_price"));
     }
 
     private String getDescription(Integer status) {

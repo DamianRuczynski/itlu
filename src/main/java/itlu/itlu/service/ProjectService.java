@@ -39,6 +39,7 @@ public class ProjectService {
         newProject.setId_team(createProjectDto.getId_team());
         newProject.setId_customer(createProjectDto.getId_customer());
         newProject.setProject_status(createProjectDto.getProject_status());
+        newProject.setProject_price(createProjectDto.getProject_price());
 
         projectRepository.save(newProject);
     }
@@ -59,6 +60,7 @@ public class ProjectService {
                 project.getProject_purpose(),
                 project.getId_team(),
                 project.getId_customer(),
-                project.getProject_status());
+                project.getProject_status(),
+                project.getProject_price());
     }
 }

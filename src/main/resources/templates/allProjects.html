@@ -23,6 +23,7 @@
         <th>Team</th>
         <th>Company Name</th>
         <th>Status</th>
+        <th>Project Price</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -33,6 +34,7 @@
         <td><span th:text="${project.getTeamName()}">  </span></td>
         <td><span th:text="${project.getCompanyName()}">  </span></td>
         <td><span th:text="${project.getProject_status()}">  </span></td>
+        <td><span th:text="${project.getProject_price()}">  </span></td>
         <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${project.getId()} + '/editProject'}">Edit</a></td>
         <td><a onclick="return confirm('Are you sure?')" th:href="@{'/' + ${project.getId()} + '/deleteProject'}">Delete</a></td>
         <th></th>

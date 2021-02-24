@@ -18,4 +18,6 @@ public class ProjectDto {
     private String projectName;
     private String projectPurpose;
     private String project_status;
+    private Integer project_price;
+
 }
